@@ -1,21 +1,95 @@
-### Weather Reminder Project Description
 
-**Project Name:** Weather Reminder
+# WeatherReminder
 
-**Description:**
-Weather Reminder is a Python-based application designed to provide users with timely weather updates via email notifications. This project integrates web scraping and email functionalities using the Beautiful Soup library to gather weather data from reliable online sources and the SMTP library to send this information via email.
+**WeatherReminder** is a Python script designed to send daily weather updates via email. It fetches the current weather information for a specified city and delivers it straight to your inbox, ensuring you're always prepared for the day's conditions.
 
-**Key Features:**
-1. **Weather Data Scraping:** The application employs Beautiful Soup to scrape current weather information from a trusted weather website, extracting details such as temperature, humidity, wind speed, and weather conditions.
-2. **Email Notifications:** Weather updates are sent to users via email using the SMTP library, ensuring accurate and timely information delivery.
-3. **Scheduling:** Users can schedule specific times for receiving weather updates, ensuring they get the information when they need it, such as before leaving for work or planning outdoor activities.
+## Features
 
-**How It Works:**
-1. **Data Scraping:** At regular intervals, the application scrapes the latest weather data using Beautiful Soup.
-2. **User Setup:** Users register their email addresses and set their preferred times for receiving weather updates.
-3. **Email Dispatch:** At the scheduled times, the application formats the scraped weather data into a user-friendly email and sends it using the SMTP protocol.
+* 🌤️ Retrieves real-time weather data for your chosen city.
+* 📧 Sends daily weather summaries to your email.
+* 🕒 Automates daily updates using task schedulers like `cron` or Windows Task Scheduler.
 
-**Benefits:**
-Weather Reminder is ideal for individuals who need consistent weather updates without the hassle of checking weather apps or websites. It is especially useful for professionals, travelers, and outdoor enthusiasts who rely on accurate weather information to plan their activities.
+## Prerequisites
 
-By combining the power of Python, Beautiful Soup, and SMTP, Weather Reminder offers a seamless and automated solution for staying informed about current weather conditions.
+* Python 3.x
+* An API key from [OpenWeatherMap](https://openweathermap.org/api)
+* Access to an SMTP server (e.g., Gmail) for sending emails
+
+## Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/ManishBhojak/WeatherReminder.git
+   cd WeatherReminder
+   ```
+
+2. **Install required packages:**
+
+   Ensure you have the necessary Python packages installed. You can use `pip` to install them:
+
+   ```bash
+   pip install requests
+   ```
+
+   *(Note: If there are additional dependencies, please list them here.)*
+
+## Configuration
+
+Before running the script, configure the following settings:
+
+1. **API Key:**
+
+   Replace `'YOUR_API_KEY'` in the script with your actual OpenWeatherMap API key.
+
+2. **Email Settings:**
+
+   Update the script with your email credentials and SMTP server details:
+
+   ```python
+   sender_email = "your_email@example.com"
+   receiver_email = "recipient_email@example.com"
+   password = "your_email_password"
+   smtp_server = "smtp.example.com"
+   smtp_port = 587
+   ```
+
+   *(Ensure you handle your credentials securely and avoid hardcoding sensitive information.)*
+
+3. **City Configuration:**
+
+   Set your desired city for weather updates:
+
+   ```python
+   city = "Your_City_Name"
+   ```
+
+## Usage
+
+Run the script using Python:
+
+```bash
+python weatherReminder.py
+```
+
+To automate daily execution:
+
+* **On Unix/Linux:**
+
+  Use `cron` to schedule the script. For example, to run daily at 7 AM:
+
+  ```bash
+  0 7 * * * /usr/bin/python3 /path/to/weatherReminder.py
+  ```
+
+* **On Windows:**
+
+  Use Task Scheduler to create a daily task that runs the script at your preferred time.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+* [OpenWeatherMap](https://openweathermap.org/) for providing the weather API.
